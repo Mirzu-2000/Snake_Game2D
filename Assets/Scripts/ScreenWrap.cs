@@ -24,7 +24,7 @@ public class ScreenWrap : MonoBehaviour
         // Check if the snake crosses the Y boundaries
         if (position.y > positiveYBoundary)
         {
-            position.y = -negativeYBoundary; // Wraps from top to bottom
+            position.y = negativeYBoundary; // Wraps from top to bottom
         }
         else if (position.y < negativeYBoundary)
         {
