@@ -12,6 +12,8 @@ public class SnakeController : MonoBehaviour
     private List<Transform> bodySegments = new List<Transform>();
     private Vector2 moveDirection = Vector2.right;
     private bool canChangeDirection = true;
+    public ScoreManager scoreManager; // Reference to ScoreManager script
+
 
     void Start()
     {
@@ -107,17 +109,19 @@ public class SnakeController : MonoBehaviour
         Debug.Log("Collision!");
         if (other.CompareTag("MassGainer"))
         {
+            scoreManager.AddScore(5); // Add 5 points
             AddBodySegment(); // Adds a body segment to the snake
-           // score += 5;
             Destroy(other.gameObject); // Destroy food
         }
         else if (other.CompareTag("MassBurner"))
         {
             if (bodySegments.Count > 0)
             {
+                scoreManager.AddScore(-5); // Deduct 5 points
                 RemoveBodySegment(); // Removes a body segment if the snake has any
+
             }
-           // score -= 5;
+           
             Destroy(other.gameObject); // Destroy food
         }
 
