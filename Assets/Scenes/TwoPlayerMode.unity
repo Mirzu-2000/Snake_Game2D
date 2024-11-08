@@ -1114,7 +1114,7 @@ GameObject:
   - component: {fileID: 1738964268}
   - component: {fileID: 1738964267}
   m_Layer: 0
-  m_Name: Score Boder
+  m_Name: Score Broder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class SnakeController : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class SnakeController : MonoBehaviour
     public float moveInterval = 0.3f; // Time in seconds between each move
     private float moveTimer = 0.0f;
     public GameObject bodySegmentPrefab; // Assign in the inspector
-    private Vector2 moveDirection = Vector2.right;
     private List<Transform> bodySegments = new List<Transform>();
+    private Vector2 moveDirection = Vector2.right;
     private bool canChangeDirection = true;
 
     void Start()
@@ -84,5 +85,49 @@ public class SnakeController : MonoBehaviour
         // Add the new segment to the list of segments
         bodySegments.Add(newSegment);
     }
+
+    private void RemoveBodySegment()
+    {
+        // Ensure there is at least one segment to remove
+        if (bodySegments.Count > 0)
+        {
+            // Get the last segment in the list
+            Transform segmentToRemove = bodySegments[bodySegments.Count - 1];
+
+            // Remove it from the list
+            bodySegments.RemoveAt(bodySegments.Count - 1);
+
+            // Destroy the segment GameObject to remove it visually from the game
+            Destroy(segmentToRemove.gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Collision!");
+        if (other.CompareTag("MassGainer"))
+        {
+            AddBodySegment(); // Adds a body segment to the snake
+           // score += 5;
+            Destroy(other.gameObject); // Destroy food
+        }
+        else if (other.CompareTag("MassBurner"))
+        {
+            if (bodySegments.Count > 0)
+            {
+                RemoveBodySegment(); // Removes a body segment if the snake has any
+            }
+           // score -= 5;
+            Destroy(other.gameObject); // Destroy food
+        }
+
+       // UpdateScoreDisplay();
+    }
+
+
+
+
+
+
 
 }
