@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class SnakeTwoController : MonoBehaviour
 {
-    //public float moveSpeed = 0.1f;
+    
     public float gridSize = 1.0f; // Size of one grid unit
     public float moveInterval = 0.3f; // Time in seconds between each move
     private float moveTimer = 0.0f;
@@ -11,7 +11,7 @@ public class SnakeTwoController : MonoBehaviour
     private Vector2 moveDirection = Vector2.left;
     private List<Transform> bodySegments = new List<Transform>();
     private bool canChangeDirection = true;
-
+ 
     void Start()
     {
         // Create the initial body segment as the tail
@@ -107,7 +107,7 @@ public class SnakeTwoController : MonoBehaviour
         if (other.CompareTag("MassGainer"))
         {
             AddBodySegment(); // Adds a body segment to the snake
-                              // score += 5;
+                        
             Destroy(other.gameObject); // Destroy food
         }
         else if (other.CompareTag("MassBurner"))
@@ -115,8 +115,9 @@ public class SnakeTwoController : MonoBehaviour
             if (bodySegments.Count > 0)
             {
                 RemoveBodySegment(); // Removes a body segment if the snake has any
+               
             }
-            // score -= 5;
+            
             Destroy(other.gameObject); // Destroy food
         }
 

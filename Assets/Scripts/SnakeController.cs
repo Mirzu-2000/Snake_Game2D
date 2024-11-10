@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SocialPlatforms.Impl;
+using System.Collections;
 
 public class SnakeController : MonoBehaviour
 {
-    //public float moveSpeed = 0.1f;
+    
     public float gridSize = 1.0f; // Size of one grid unit
     public float moveInterval = 0.3f; // Time in seconds between each move
     private float moveTimer = 0.0f;
@@ -15,8 +16,19 @@ public class SnakeController : MonoBehaviour
     public ScoreManager scoreManager; // Reference to ScoreManager script
 
 
+
+    // Power-up related properties
+    private bool isSpeedBoosted = false; // Tracks if SpeedUp power-up is active
+    private bool isScoreBoosted = false; // Tracks if ScoreBoost power-up is active
+    private bool isShieldActive = false;  // Track if Shield power-up is active
+    private float originalMoveInterval; // Stores original move interval for resetting after SpeedUp
+    private float powerUpDuration = 4f; // Duration for which a power-up effect is active
+
     void Start()
     {
+        // Save the original move interval for resetting after SpeedUp power-up
+        originalMoveInterval = moveInterval;
+
         // Create the initial body segment as the tail
         AddBodySegment();
     }
@@ -33,6 +45,7 @@ public class SnakeController : MonoBehaviour
         }
 
         HandleInput(); // Ensure input can be handled outside of the timer
+
 
     }
 
@@ -66,6 +79,25 @@ public class SnakeController : MonoBehaviour
         }
 
         canChangeDirection = true; // Allow direction change again after moving
+
+        // Check if the snake collides with its body (self-collision)
+        if (!isShieldActive && CheckSelfCollision())
+        {
+            Die();  // Call the death method if there's a self-collision
+        }
+    }
+
+    private bool CheckSelfCollision()
+    {
+        // Check if the snake's head collides with any of its body segments
+        for (int i = 0; i < bodySegments.Count; i++)
+        {
+            if (transform.position == bodySegments[i].position)
+            {
+                return true;  // Self-collision detected
+            }
+        }
+        return false;  // No self-collision
     }
 
 
@@ -99,39 +131,112 @@ public class SnakeController : MonoBehaviour
             // Remove it from the list
             bodySegments.RemoveAt(bodySegments.Count - 1);
 
-            // Destroy the segment GameObject to remove it visually from the game
+            // Destroy the segment GameObject 
             Destroy(segmentToRemove.gameObject);
         }
     }
+
+    private void Die()
+    {
+        // Stop the game or perform actions when the snake dies
+        Debug.Log("Game Over! Snake collided with its body.");
+        // Can call methods to stop the game, restart, or go to the game over screen here
+    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collision!");
         if (other.CompareTag("MassGainer"))
         {
-            scoreManager.AddScore(5); // Add 5 points
-            AddBodySegment(); // Adds a body segment to the snake
-            Destroy(other.gameObject); // Destroy food
+            AddBodySegment(); // Add a new body segment to the snake
+            int scoreToAdd = isScoreBoosted ? 10 : 5; // Double score if ScoreBoost is active
+            scoreManager.AddScore(scoreToAdd); // Update score
+            Destroy(other.gameObject); // Remove the food object
         }
         else if (other.CompareTag("MassBurner"))
         {
             if (bodySegments.Count > 0)
             {
-                scoreManager.AddScore(-5); // Deduct 5 points
                 RemoveBodySegment(); // Removes a body segment if the snake has any
-
+                scoreManager.AddScore(-5); // Deduct 5 points
             }
-           
+            
             Destroy(other.gameObject); // Destroy food
         }
 
-       // UpdateScoreDisplay();
+        // Check if the snake collided with a SpeedUp power-up
+        else if (other.CompareTag("SpeedUp"))
+        {
+            ActivateSpeedBoost(); // Apply speed boost effect
+            Destroy(other.gameObject); // Remove the power-up
+        }
+        // Check if the snake collided with a ScoreBoost power-up
+        else if (other.CompareTag("ScoreBoost"))
+        {
+            ActivateScoreBoost(); // Apply score boost effect
+            Destroy(other.gameObject); // Remove the power-up
+        }
+
+        // Check if the snake collided with a Shield power-up
+        else if (other.CompareTag("Shield"))
+        {
+            ActivateShield(); // Activate the Shield power-up
+            Destroy(other.gameObject); // Remove the power-up
+        }
+
+
+
     }
 
 
+    private void ActivateSpeedBoost()
+    {
+        // Only apply speed boost if not already active
+        if (!isSpeedBoosted)
+        {
+            isSpeedBoosted = true; // Set flag to indicate speed boost is active
+            moveInterval *= 0.5f; // Double the speed by halving the move interval
+            Invoke("DeactivateSpeedBoost", powerUpDuration); // Schedule to deactivate after powerUpDuration
+        }
+    }
+
+    private void DeactivateSpeedBoost()
+    {
+        // Reset to original speed after speed boost duration
+        isSpeedBoosted = false;
+        moveInterval = originalMoveInterval;
+    }
+
+    private void ActivateScoreBoost()
+    {
+        // Only apply score boost if not already active
+        if (!isScoreBoosted)
+        {
+            isScoreBoosted = true; // Set flag to indicate score boost is active
+            Invoke("DeactivateScoreBoost", powerUpDuration); // Schedule to deactivate after powerUpDuration
+        }
+    }
+
+    private void DeactivateScoreBoost()
+    {
+        // Reset score multiplier after score boost duration
+        isScoreBoosted = false;
+    }
 
 
+    // Activate the Shield power-up
+    private void ActivateShield()
+    {
+        isShieldActive = true;  // Set the shield to active
+        Invoke("DeactivateShield", powerUpDuration); // Deactivate shield after a certain duration
+    }
 
+    // Deactivate the Shield power-up after a set duration
+    private void DeactivateShield()
+    {
+        isShieldActive = false; // Set the shield to inactive
+    }
 
 
 }
