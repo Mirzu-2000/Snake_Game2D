@@ -11,7 +11,8 @@ public class SnakeTwoController : MonoBehaviour
     private Vector2 moveDirection = Vector2.left;
     private List<Transform> bodySegments = new List<Transform>();
     private bool canChangeDirection = true;
- 
+    public TwoPlayerScoreManager scoreManager; // Reference to ScoreManager script
+
     void Start()
     {
         // Create the initial body segment as the tail
@@ -107,7 +108,7 @@ public class SnakeTwoController : MonoBehaviour
         if (other.CompareTag("MassGainer"))
         {
             AddBodySegment(); // Adds a body segment to the snake
-                        
+            scoreManager.AddScorePlayerTwo(5); // Update score           
             Destroy(other.gameObject); // Destroy food
         }
         else if (other.CompareTag("MassBurner"))
@@ -115,7 +116,7 @@ public class SnakeTwoController : MonoBehaviour
             if (bodySegments.Count > 0)
             {
                 RemoveBodySegment(); // Removes a body segment if the snake has any
-               
+                scoreManager.AddScorePlayerTwo(-5); // Deduct 5 points
             }
             
             Destroy(other.gameObject); // Destroy food
