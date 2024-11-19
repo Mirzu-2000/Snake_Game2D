@@ -5,8 +5,8 @@ public class FoodSpawner : MonoBehaviour
     public GameObject massGainerPrefab; // Assign in inspector
     public GameObject massBurnerPrefab; // Assign in inspector
 
-    public float minSpawnInterval = 1.5f; // Minimum time for food to respawn
-    public float maxSpawnInterval = 3.5f; // Maximum time for food to respawn
+    public float minSpawnInterval = 5f; // Minimum time for food to respawn
+    public float maxSpawnInterval = 8f; // Maximum time for food to respawn
     private float currentSpawnInterval;   // Randomized time for the next spawn
 
     private GameObject currentFood;

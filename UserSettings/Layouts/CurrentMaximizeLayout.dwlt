@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 14755
+  controlID: 18097
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 14756
+  controlID: 18098
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 14757
+  controlID: 18099
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,8 +195,8 @@ MonoBehaviour:
     y: 0
     width: 708
     height: 436.8
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -765,9 +765,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7e8bfeff
-      m_LastClickedID: -95362
-      m_ExpandedIDs: f496feff8872ffff90c6ffff16fbffff96810000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: f496feff8872ffff90c6ffff16fbffff968100005c940000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 14657
+  controlID: 18057
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -888,7 +888,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/OnePlayerMode
+    - Assets/Scripts/Consumables
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -896,15 +896,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 81
   m_LastFolders:
-  - Assets/Scripts/OnePlayerMode
+  - Assets/Scripts/Consumables
   m_LastFoldersGridSize: 81
   m_LastProjectPath: D:\UNITY\Snake_Game2D
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a6890000
-    m_LastClickedID: 35238
+    m_SelectedIDs: bc890000
+    m_LastClickedID: 35260
     m_ExpandedIDs: 000000002c71000046710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -958,8 +958,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7e8bfeff
-    m_LastClickedInstanceID: -95362
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000d4700000d8700000dc700000e0700000e4700000
     m_RenameOverlay:
@@ -1152,7 +1152,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 44
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
