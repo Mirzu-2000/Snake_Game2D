@@ -5,16 +5,20 @@ using System.Collections;
 
 public class SnakeController : MonoBehaviour
 {
-    
-    public float gridSize = 1.0f; // Size of one grid unit
-    public float moveInterval = 0.3f; // Time in seconds between each move
-    private float moveTimer = 0.0f;
-    public GameObject bodySegmentPrefab; // Assign in the inspector
-    private List<Transform> bodySegments = new List<Transform>();
-    private Vector2 moveDirection = Vector2.right;
-    private bool canChangeDirection = true;
-    public ScoreManager scoreManager; // Reference to ScoreManager script
 
+    // Movement settings
+    public float gridSize = 1.0f; // Size of one grid unit for snake movement
+    public float moveInterval = 0.3f; // Time in seconds between each move
+    private float moveTimer = 0.0f; // Timer to control movement intervals
+    private Vector2 moveDirection = Vector2.right; // Starting direction of movement
+    private bool canChangeDirection = true; // Prevent immediate direction reversal
+
+    // Body management
+    public GameObject bodySegmentPrefab; // Prefab for the snake's body segments
+    private List<Transform> bodySegments = new List<Transform>(); // List to track body segments
+
+    // Scoring and game logic
+    public ScoreManager scoreManager; // Reference to the ScoreManager script for handling scores
 
 
     // Power-up related properties
@@ -29,8 +33,8 @@ public class SnakeController : MonoBehaviour
         // Save the original move interval for resetting after SpeedUp power-up
         originalMoveInterval = moveInterval;
 
-        // Create the initial body segment as the tail
-        AddBodySegment();
+        // Add the initial body segment at a position behind the head
+        AddInitialBodySegment();
     }
 
     void Update()
@@ -100,6 +104,20 @@ public class SnakeController : MonoBehaviour
         return false;  // No self-collision
     }
 
+    private void AddInitialBodySegment()
+    {
+        // Calculate the initial position for the first body segment
+        Vector3 initialSegmentPosition = transform.position - (Vector3)moveDirection * gridSize;
+
+        // Instantiate the body segment prefab
+        Transform newSegment = Instantiate(bodySegmentPrefab).transform;
+
+        // Set its position to the calculated position
+        newSegment.position = initialSegmentPosition;
+
+        // Add the new segment to the list of body segments
+        bodySegments.Add(newSegment);
+    }
 
     public void AddBodySegment()
     {

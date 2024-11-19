@@ -122,6 +122,101 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &91266189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91266191}
+  - component: {fileID: 91266190}
+  m_Layer: 0
+  m_Name: Power Up Spawn Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &91266190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91266189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef22dd9bf4944d4882d1757a252b793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedUpPrefab: {fileID: 3786179740925981219, guid: 3b79fd8ae17f7ea428cf1d926042b5fc, type: 3}
+  scoreBoostPrefab: {fileID: 8625897888584834786, guid: ae74534bdb4dbfc489765a6bc34518b2, type: 3}
+  shieldPrefab: {fileID: 1267585326093926155, guid: 47ead4aacfa957548b4263f6497fdbfe, type: 3}
+  minSpawnInterval: 5
+  maxSpawnInterval: 10
+--- !u!4 &91266191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91266189}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &111898385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111898387}
+  - component: {fileID: 111898386}
+  m_Layer: 0
+  m_Name: TwoPlayerScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &111898386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111898385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca3081860e6bbe4a89c0fd5c8cee107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOneScoreText: {fileID: 900563379}
+  playerTwoScoreText: {fileID: 1732565700}
+--- !u!4 &111898387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111898385}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &354047791
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +244,7 @@ RectTransform:
   m_GameObject: {fileID: 354047791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1921385902}
@@ -562,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &900563378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -579,7 +674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 472079.9, y: 63720}
+  m_AnchoredPosition: {x: -150, y: -12.5}
   m_SizeDelta: {x: 300, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900563379
@@ -679,51 +774,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900563377}
   m_CullTransparentMesh: 1
---- !u!1 &1028282737
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1028282739}
-  - component: {fileID: 1028282738}
-  m_Layer: 0
-  m_Name: ScoreDummy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1028282738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028282737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab54b20fc1c609548a550ac0b898385b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 900563379}
---- !u!4 &1028282739
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028282737}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1403983513
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +805,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   massGainerPrefab: {fileID: 3097715717799697274, guid: 0b5f1ad65ec7bc84bbc37b67e8f5ddfd, type: 3}
   massBurnerPrefab: {fileID: 5187072605455387535, guid: 3363555568b9a504aaa56421d8169bc4, type: 3}
-  spawnInterval: 5
+  minSpawnInterval: 1.5
+  maxSpawnInterval: 3.5
 --- !u!4 &1403983515
 Transform:
   m_ObjectHideFlags: 0
@@ -787,7 +838,7 @@ GameObject:
   - component: {fileID: 1612769472}
   m_Layer: 0
   m_Name: Snake-2 Head
-  m_TagString: Untagged
+  m_TagString: Snake2Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -946,6 +997,7 @@ MonoBehaviour:
   gridSize: 1
   moveInterval: 0.1
   bodySegmentPrefab: {fileID: 8395245063836687574, guid: b563a0ed36a95d4478bc3bc499023a08, type: 3}
+  scoreManager: {fileID: 111898386}
 --- !u!114 &1612769472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,11 +1022,11 @@ GameObject:
   - component: {fileID: 1635534085}
   - component: {fileID: 1635534087}
   - component: {fileID: 1635534086}
-  - component: {fileID: 1635534088}
   - component: {fileID: 1635534089}
+  - component: {fileID: 1635534090}
   m_Layer: 0
   m_Name: Snake-1 Head
-  m_TagString: Untagged
+  m_TagString: Snake1Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1118,22 +1170,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &1635534088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635534083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acfba933cf7014342b3b9a52016cba22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: 1
-  moveInterval: 0.1
-  bodySegmentPrefab: {fileID: 8395245063836687574, guid: b563a0ed36a95d4478bc3bc499023a08, type: 3}
-  scoreManager: {fileID: 1028282738}
 --- !u!114 &1635534089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,6 +1182,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b20dc898980dd4c8af996a5929dc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1635534090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635534083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7f9d2841f4e6d498c237a65d619136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 1
+  moveInterval: 0.1
+  bodySegmentPrefab: {fileID: 8395245063836687574, guid: b563a0ed36a95d4478bc3bc499023a08, type: 3}
+  scoreManager: {fileID: 111898386}
 --- !u!1 &1732565698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,7 +1215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1732565699
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1375,7 +1427,7 @@ GameObject:
   - component: {fileID: 1828901396}
   - component: {fileID: 1828901395}
   m_Layer: 0
-  m_Name: Score Broder (1)
+  m_Name: Score Broder Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1565,4 +1617,5 @@ SceneRoots:
   - {fileID: 1635534084}
   - {fileID: 1612769467}
   - {fileID: 1403983515}
-  - {fileID: 1028282739}
+  - {fileID: 111898387}
+  - {fileID: 91266191}
