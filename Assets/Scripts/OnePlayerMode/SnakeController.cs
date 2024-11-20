@@ -68,7 +68,7 @@ public class SnakeController : MonoBehaviour
 
     private void Move()
     {
-        
+        //stores the current position of the snake's head
         Vector3 previousPosition = transform.position;
 
         // Move the head in increments of grid size
@@ -159,6 +159,7 @@ public class SnakeController : MonoBehaviour
         // Stop the game or perform actions when the snake dies
         Debug.Log("Game Over! Snake collided with its body.");
         // Can call methods to stop the game, restart, or go to the game over screen here
+        FindObjectOfType<GameOverController>().TriggerGameOver(); // Call Game Over logic
     }
 
 
