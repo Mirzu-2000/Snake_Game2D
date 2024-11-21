@@ -18,6 +18,7 @@ public class SnakeOneController : MonoBehaviour
     // Scoring and game logic
     public TwoPlayerScoreManager scoreManager; // Reference to the ScoreManager script for handling scores
 
+    public GameOverManager gameOverManager; // Reference to Gameover manager
 
     // Power-up related properties
     private bool isSpeedBoosted = false; // Tracks if SpeedUp power-up is active
@@ -209,20 +210,43 @@ public class SnakeOneController : MonoBehaviour
         }
 
 
-        else if (other.CompareTag("Snake2Head") ||
-        (other.CompareTag("BodySegment") && other.transform.parent != transform))
+        /*// Check if Snake-1 collides with Snake-2's head or body
+        if (other.CompareTag("Snake2Head") || (other.CompareTag("BodySegment") && other.transform.parent.CompareTag("Snake2")))
         {
             Debug.Log("Snake-1 wins! Snake-2 has been hit.");
+            gameOverManager.TriggerGameOver("Snake-1");
             EndGame("Snake-1");
         }
-
+        // Check if Snake-1 collides with its own body
         else if (other.CompareTag("BodySegment") && other.transform.parent == transform && !isShieldActive)
         {
             Debug.Log("Snake-2 wins! Snake-1 bit its own body.");
+            gameOverManager.TriggerGameOver("Snake-2");
             EndGame("Snake-2");
+        }*/
+
+        Debug.Log("Trigger detected with: " + other.gameObject.name);
+
+        // Find and validate GameOverManager
+        GameOverManager gameOverManager = FindObjectOfType<GameOverManager>();
+        if (gameOverManager == null)
+        {
+            Debug.LogError("GameOverManager is not found in the scene!");
+            return; // Exit to prevent further errors
         }
 
-     
+        // Handle collisions
+        if (other.CompareTag("Snake2Head") || (other.CompareTag("BodySegment") && other.transform.parent != transform))
+        {
+            Debug.Log("Snake-1 wins! Snake-2 has been hit.");
+            gameOverManager.TriggerGameOver("Snake-1");
+        }
+        else if (other.CompareTag("BodySegment") && other.transform.parent == transform && !isShieldActive)
+        {
+            Debug.Log("Snake-2 wins! Snake-1 bit its own body.");
+            gameOverManager.TriggerGameOver("Snake-2");
+        }
+
     }
 
     private void EndGame(string winner)

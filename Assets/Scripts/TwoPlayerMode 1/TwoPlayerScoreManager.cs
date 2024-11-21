@@ -36,4 +36,17 @@ public class TwoPlayerScoreManager : MonoBehaviour
     {
         playerTwoScoreText.text = "Player-2 Score: " + playerTwoScore;
     }
+
+    // Getter for Player One's score
+    public int GetPlayerOneScore()
+    {
+        return playerOneScore;
+    }
+
+    // Getter for Player Two's score
+    public int GetPlayerTwoScore()
+    {
+        return playerTwoScore;
+    }
+
 }

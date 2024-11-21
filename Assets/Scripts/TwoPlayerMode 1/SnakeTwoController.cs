@@ -17,7 +17,7 @@ public class SnakeTwoController : MonoBehaviour
 
     // Scoring and game logic
     public TwoPlayerScoreManager scoreManager; // Reference to the ScoreManager script for handling scores
-
+    public GameOverManager gameOverManager; // Reference to Gameover manager
 
 
     // Power-up related properties
@@ -195,16 +195,28 @@ public class SnakeTwoController : MonoBehaviour
             ActivateShield();
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("Snake1Head") ||
-                 (other.CompareTag("BodySegment") && other.transform.parent != transform))
+
+        Debug.Log("Trigger detected with: " + other.gameObject.name);
+
+        // Find the GameOverManager
+        GameOverManager gameOverManager = FindObjectOfType<GameOverManager>();
+        if (gameOverManager == null)
+        {
+            Debug.LogError("GameOverManager is not found in the scene!");
+            return; // Exit to prevent null reference errors
+        }
+
+        // Handle collision with Snake1's head or body
+        if (other.CompareTag("Snake1Head") || (other.CompareTag("BodySegment") && other.transform.parent != transform))
         {
             Debug.Log("Snake-2 wins! Snake-1 has been hit.");
-            EndGame("Snake-2");
+            gameOverManager.TriggerGameOver("Snake-2"); // Declare Snake-1 as the winner
         }
+        // Handle collision with Snake2's own body
         else if (other.CompareTag("BodySegment") && other.transform.parent == transform && !isShieldActive)
         {
             Debug.Log("Snake-1 wins! Snake-2 bit its own body.");
-            EndGame("Snake-1");
+            gameOverManager.TriggerGameOver("Snake-1"); // Declare Snake-1 as the winner
         }
     }
 
