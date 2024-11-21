@@ -5,6 +5,7 @@ public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
+    public GameOverController gameOverController; // Reference to the GameOverController
 
     private int score = 0; // Current score
     private int highScore = 0; // High score
@@ -31,7 +32,17 @@ public class ScoreManager : MonoBehaviour
     {
         score += points;
         UpdateScoreText();
-        UpdateHighScore(); // Check and update high score if needed
+
+        // Trigger game over if score drops below 0
+        if (score < 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            UpdateHighScore(); // Check and update high score if needed
+        }
+
     }
 
     private void UpdateScoreText()
@@ -67,6 +78,16 @@ public class ScoreManager : MonoBehaviour
         UpdateHighScoreText(); // Update the UI
     }
 
-
+    private void GameOver()
+    {
+        if (gameOverController != null)
+        {
+            gameOverController.TriggerGameOver(); // Trigger game over
+        }
+        else
+        {
+            Debug.LogWarning("GameOverController is not assigned in the ScoreManager.");
+        }
+    }
 
 }
