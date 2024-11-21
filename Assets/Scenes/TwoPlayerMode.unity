@@ -2312,8 +2312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   massGainerPrefab: {fileID: 3097715717799697274, guid: 0b5f1ad65ec7bc84bbc37b67e8f5ddfd, type: 3}
   massBurnerPrefab: {fileID: 5187072605455387535, guid: 3363555568b9a504aaa56421d8169bc4, type: 3}
-  minSpawnInterval: 1.5
-  maxSpawnInterval: 3.5
+  minSpawnInterval: 5
+  maxSpawnInterval: 8
 --- !u!4 &1403983515
 Transform:
   m_ObjectHideFlags: 0

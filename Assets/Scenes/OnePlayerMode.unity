@@ -1664,6 +1664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 886983019}
   highScoreText: {fileID: 991918265}
+  gameOverController: {fileID: 1498795075}
 --- !u!4 &987116184
 Transform:
   m_ObjectHideFlags: 0
