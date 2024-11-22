@@ -8,6 +8,9 @@ public class GameOverManager : MonoBehaviour
     public TextMeshProUGUI winnerText; // Text element to display the winner
     public string mainMenuSceneName = "MainMenu"; // Name of the main menu scene
     public TwoPlayerScoreManager scoreManager; // Reference to the TwoPlayerScoreManager script
+    public PauseMenuController pauseMenuController; // Reference the PauseMenuController script
+    public SoundManager soundManager;
+
 
     private bool isGameOver = false; // Tracks if the game is already over
 
@@ -47,6 +50,11 @@ public class GameOverManager : MonoBehaviour
 
         isGameOver = true; // Set the game over state
 
+        // Deactivate pause panel through PauseMenuController
+         pauseMenuController.DeactivatePausePanel();
+
+        soundManager.PlayGameOver();
+
         // Display the game over screen and show the winner
         gameOverScreen.SetActive(true);
         winnerText.text = $"{winner} wins!"; // Display the winner
@@ -58,6 +66,7 @@ public class GameOverManager : MonoBehaviour
     // Restart the current scene
     public void RestartGame()
     {
+        soundManager.PlayButtonClick();
         Time.timeScale = 1f; // Resume the game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload the current scene
     }
@@ -65,6 +74,7 @@ public class GameOverManager : MonoBehaviour
     // Return to the main menu
     public void ReturnToMainMenu()
     {
+        soundManager.PlayButtonClick();
         Time.timeScale = 1f; // Resume the game
         SceneManager.LoadScene(mainMenuSceneName); // Load the main menu scene
     }
