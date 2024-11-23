@@ -16,8 +16,8 @@ public class PauseMenuController : MonoBehaviour
             return;
 
         {
-            // Toggle pause screen with the Escape key
-            if (Input.GetKeyDown(KeyCode.Escape))
+            // Toggle pause screen with the Q key
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 soundManager.PlayButtonClick();
                 if (isPaused)

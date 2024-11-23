@@ -21,6 +21,6 @@ public class MainMenuManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quit Game"); // Logs a message in the editor for testing
-        Application.Quit(); // Quits the application (works only in a built game)
+        Application.OpenURL("https://www.linkedin.com/in/mirza-ali-63921b191/"); // Redirects to a website    
     }
 }
