@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Food
+  - MassBurner
+  - MassGainer
+  - SpeedUp
+  - ScoreBoost
+  - Shield
+  - Snake1Head
+  - Snake2Head
+  - BodySegment
   layers:
   - Default
   - TransparentFX
